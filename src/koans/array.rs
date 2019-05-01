@@ -59,7 +59,7 @@ fn array_map() {
 #[test]
 fn array_filter() {
     let arr: [u16; 5] = [1, 2, 3, 4, 5];
-    let mut iterator = arr.iter().filter(__);
+    let mut iterator = arr.iter().filter(|x| x % 2);
     assert!(iterator.next().unwrap() == &2);
     assert!(iterator.next().unwrap() == &4);
     assert!(iterator.next().is_none());
@@ -69,7 +69,7 @@ fn array_filter() {
 #[test]
 fn array_filter_map() {
     let arr: [u8; 5] = [2, 1, 2, 1, 2];
-    let mut iterator = arr.iter().filter_map(|&x| if x == 1 { Some(__) } else { None });
+    let mut iterator = arr.iter().filter_map(|&x| if x == 1 { Some(1) } else { None });
     assert!(iterator.next() == Some(3));
     assert!(iterator.next() == Some(3));
     assert!(iterator.next().is_none());
